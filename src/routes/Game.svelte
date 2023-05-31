@@ -50,6 +50,7 @@
         pairs = [...pairs, { player1, player2 }];
       }
       rounds = [{ id, pairs, current: true }, ...rounds];
+      console.log(rounds);
     } else {
       winner = ranNamesArrCopy[0];
       isWinner = true;
@@ -62,7 +63,12 @@
 
   onMount(async () => {
     await get().then(() => {
+      // console.log(JSON.stringify($playersArr));
+      console.log($playersArr);
+
       while ($ranNamesArr.length != $playersArr.length) {
+        console.log($ranNamesArr.length);
+
         const randName = getRandomValue($playersArr);
         if (!$ranNamesArr.includes(randName)) {
           ranNamesArr.update((ranNamesArr) => [...ranNamesArr, randName]);
